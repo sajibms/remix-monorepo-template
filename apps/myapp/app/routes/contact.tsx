@@ -1,7 +1,8 @@
 import { json } from '@remix-run/node';
 import { ContactForm } from '@acme/contact-form';
-import { useLoaderData } from '@remix-run/react';
+import { useActionData, useLoaderData, useNavigation } from '@remix-run/react';
 import { verifyRecaptcha } from '@acme/contact-form/server';
+import { useEffect } from 'react';
 
 export const loader = async () => {
   return new Response(
@@ -99,10 +100,26 @@ export async function action({ request }: { request: Request }) {
 export default function ContactUs() {
   const loaderData = useLoaderData<typeof loader>();
 
+  const actionData = useActionData<typeof action>();
+
+  useEffect(() => {
+    if (actionData) {
+      if ('error' in actionData) {
+        alert(actionData.error);
+      } else if ('success' in actionData && actionData.success) {
+        alert(actionData.message);
+      }
+    }
+  }, [actionData]);
+
+  const navigation = useNavigation();
+
+  const isSubmitting = navigation.state === 'submitting';
+
   return (
     <div>
       {/* Contact us Form */}
-      <ContactForm contactUsData={loaderData} isSubmitting={false} />
+      <ContactForm contactUsData={loaderData} isSubmitting={isSubmitting} />
     </div>
   );
 }
