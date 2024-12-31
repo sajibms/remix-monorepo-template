@@ -85,8 +85,7 @@ export async function action({ request }: { request: Request }) {
       { status: 400 }
     );
   }
-
-  const data = { name, email, message };
+  
   try {
     // * Validate reCAPTCHA token after all other validations, as one token can be validated only one time
     try {
