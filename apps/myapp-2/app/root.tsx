@@ -6,7 +6,7 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 import type { MetaFunction, LinksFunction } from '@remix-run/node';
-import twStyles from './tailwind.css';
+import './tailwind.css';
 
 export const meta: MetaFunction = () => [
   {
@@ -15,7 +15,6 @@ export const meta: MetaFunction = () => [
 ];
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: twStyles },
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {
     rel: 'preconnect',
