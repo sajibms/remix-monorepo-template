@@ -15,6 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@acme/contact-form": ["libs/contact-form/src/index.ts"],
+      "@acme/contact-form/server": ["libs/contact-form/src/server.ts"],
       "@acme/login": ["libs/login/src/index.ts"],
       "@acme/login/server": ["libs/login/src/server.ts"],
       "@acme/register": ["libs/register/src/index.ts"],
