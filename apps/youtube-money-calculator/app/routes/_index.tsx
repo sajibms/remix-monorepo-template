@@ -1,9 +1,9 @@
-import NxWelcome from '../nx-welcome';
+import { NewsLetterSection } from '@acme/UI';
 
 export default function Index() {
   return (
     <div>
-      <NxWelcome title={'youtube-money-calculator'} />
+      <NewsLetterSection />
     </div>
   );
 }
