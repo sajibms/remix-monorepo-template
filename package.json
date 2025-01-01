@@ -8,7 +8,10 @@
     "lint:app1": "npx nx lint myapp",
     "lint:app2": "npx nx lint myapp-2",
     "build:app1": "npx nx build myapp",
-    "build:app2": "npx nx build myapp-2"
+    "build:app2": "npx nx build myapp-2",
+    "tool-1": "npx nx dev youtube-money-calculator",
+    "tool-1-lint": "npx nx lint youtube-money-calculator",
+    "tool-1-build": "npx nx build youtube-money-calculator"
   },
   "private": true,
   "devDependencies": {

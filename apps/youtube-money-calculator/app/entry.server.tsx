@@ -11,8 +11,13 @@ import { createReadableStreamFromReadable } from '@remix-run/node';
 import { RemixServer } from '@remix-run/react';
 import { isbot } from 'isbot';
 import { renderToPipeableStream } from 'react-dom/server';
+import dotenv from 'dotenv';
+import path from 'path';
+import mongoose from 'mongoose';
 
 const ABORT_DELAY = 5_000;
+
+dotenv.config({ path: path.join(process.cwd(), '.env') });
 
 export default function handleRequest(
   request: Request,
@@ -138,3 +143,58 @@ function handleBrowserRequest(
     setTimeout(abort, ABORT_DELAY);
   });
 }
+
+const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+
+// * Establish MongoDB connection once server boots up if not already connected
+const connectToMongoDB = async () => {
+  try {
+    // * Check if the connection is already established
+    if (mongoose.connection.readyState === 1) {
+      const serverStatus = {
+        status: 'Success',
+        message: 'Server and database are running smoothly.',
+        details: {
+          mongoDB: 'Database Is Already connected',
+          server: 'Stable',
+          port,
+        },
+      };
+
+      console.log(serverStatus);
+      return;
+    }
+
+    // * Establish the connection
+    await mongoose.connect(process.env.MONGODB_URL as string);
+    const serverStatus = {
+      status: 'Success',
+      message: 'Server and database are running smoothly.',
+      details: {
+        mongoDB: 'Connected',
+        server: 'Stable',
+        port,
+      },
+    };
+
+    console.log(serverStatus);
+  } catch (err) {
+    console.error({ mongoErr: err });
+    const serverStatus = {
+      status: 'Error',
+      message: 'Server or database encountered an issue.',
+      errorDetails: {
+        mongoDB: 'Failed to connect',
+        server: 'Unstable',
+        port,
+      },
+      timestamp: new Date().toISOString(),
+    };
+
+    console.error(serverStatus);
+
+    process.exit(1);
+  }
+};
+
+connectToMongoDB();
