@@ -1,23 +1,23 @@
-import type { LoaderFunctionArgs, ActionFunctionArgs } from '@remix-run/node';
-
-import '../styles/loaderaction.css';
 import { useLoaderData, useActionData } from '@remix-run/react';
-import { json } from '@remix-run/node';
+import { useEffect } from 'react';
+import { testAction, testLoader, TestLoaderAction } from '@acme/loader-action';
 
-export const action = async ({ request }: ActionFunctionArgs) => {
-  const formData = await request.formData();
+export const action = testAction;
 
-  return json({ message: formData.toString() }, { status: 200 });
-};
+export const loader =  testLoader;
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return json({
-    message: 'Hello, world!',
-  });
-};
-
-export default function Loaderaction() {
+export default function LoaderAction() {
   const actionMessage = useActionData<typeof action>();
   const data = useLoaderData<typeof loader>();
-  return <p>Loaderaction works!</p>;
+
+  useEffect(() => {
+    if (actionMessage) {
+      console.log(actionMessage);
+      alert(actionMessage.message);
+    }
+  }, [actionMessage]);
+
+  return (
+    <TestLoaderAction actionMessage={actionMessage} data={data} />
+  );
 }
