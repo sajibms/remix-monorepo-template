@@ -1,9 +1,9 @@
-import NxWelcome from '../nx-welcome';
+import { NewsLetterSection } from '@acme/newsletter';
 
 export default function Index() {
   return (
     <div>
-      <NxWelcome title={'myapp-2'} />
+      <NewsLetterSection />
     </div>
   );
 }

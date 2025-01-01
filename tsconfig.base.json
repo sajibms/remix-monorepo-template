@@ -22,6 +22,8 @@
       "@acme/login": ["libs/login/src/index.ts"],
       "@acme/login/server": ["libs/login/src/server.ts"],
       "@acme/models": ["libs/models/src/index.ts"],
+      "@acme/newsletter": ["libs/newsletter/src/index.ts"],
+      "@acme/newsletter/server": ["libs/newsletter/src/server.ts"],
       "@acme/register": ["libs/register/src/index.ts"],
       "@acme/register/server": ["libs/register/src/server.ts"]
     }
