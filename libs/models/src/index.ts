@@ -1,1 +1,1 @@
-export * from './lib/models';
+export { storeNewsletterEmail } from './newsletter/newsletter.service';
