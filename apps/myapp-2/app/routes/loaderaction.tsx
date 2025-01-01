@@ -1,23 +1,18 @@
-import { useLoaderData, useActionData } from '@remix-run/react';
-import { useEffect } from 'react';
-import { testAction, testLoader, TestLoaderAction } from '@acme/loader-action';
+import { useLoaderData } from '@remix-run/react';
+import { testAction, testLoader } from '@acme/loader-action/server';
+import { TestForm } from '@acme/loader-action';
 
 export const action = testAction;
-
-export const loader =  testLoader;
+export const loader = testLoader;
 
 export default function LoaderAction() {
-  const actionMessage = useActionData<typeof action>();
   const data = useLoaderData<typeof loader>();
 
-  useEffect(() => {
-    if (actionMessage) {
-      console.log(actionMessage);
-      alert(actionMessage.message);
-    }
-  }, [actionMessage]);
-
   return (
-    <TestLoaderAction actionMessage={actionMessage} data={data} />
+    <div>
+      <h1>Welcome to LoaderAction!</h1>
+      <TestForm />
+      <p>{data.message}</p>
+    </div>
   );
 }
