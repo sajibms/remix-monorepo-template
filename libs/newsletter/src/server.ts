@@ -1,1 +1,1 @@
-// This file should be used to export ONLY server-code from the library.
+export { newsletterAction } from './server/newsletter.action';
