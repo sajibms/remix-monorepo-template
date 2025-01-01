@@ -1,0 +1,9 @@
+{
+  "name": "youtube-money-calculator",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/youtube-money-calculator",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project youtube-money-calculator --web",
+  "targets": {}
+}
