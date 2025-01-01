@@ -3,8 +3,12 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "app1": "npx nx run myapp:dev",
-    "app2": "npx nx run myapp-2:dev"
+    "run:app1": "npx nx dev myapp",
+    "run:app2": "npx nx dev myapp-2",
+    "lint:app1": "npx nx lint myapp",
+    "lint:app2": "npx nx lint myapp-2",
+    "build:app1": "npx nx build myapp",
+    "build:app2": "npx nx build myapp-2"
   },
   "private": true,
   "devDependencies": {
