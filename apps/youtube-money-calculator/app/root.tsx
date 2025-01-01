@@ -8,6 +8,7 @@ import {
 import type { MetaFunction, LinksFunction } from '@remix-run/node';
 import './tailwind.css';
 import { Toaster } from 'react-hot-toast';
+import { CookieConsentBanner } from '@acme/UI';
 
 export const meta: MetaFunction = () => [
   {
@@ -39,6 +40,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Toaster position="top-right" />
+        <CookieConsentBanner />
         {children}
         <ScrollRestoration />
         <Scripts />
