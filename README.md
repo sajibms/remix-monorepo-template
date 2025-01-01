@@ -25,7 +25,7 @@
  - npx nx lint app-name
 
 # Adding a route to an existing application
- - npx nx g @nx/remix:route path-to-the-route/route-name.extension
+ - npx nx g @nx/remix:route path-to-the-route/route-name
 
 # Adding loader to an existing route
  - npx nx g @nx/remix:loader path-to-the-route/route-name.extension
