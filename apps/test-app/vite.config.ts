@@ -2,11 +2,6 @@ import { vitePlugin as remix } from '@remix-run/dev';
 import { defineConfig } from 'vite';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
-// * load the .env file
-import dotenv from "dotenv";
-import path from "path";
-dotenv.config({ path: path.join(process.cwd(), ".env") });
-
 declare module '@remix-run/node' {
   interface Future {
     v3_singleFetch: true;
@@ -27,7 +22,4 @@ export default defineConfig({
     }),
     nxViteTsPaths(),
   ],
-  server: {
-    port: process.env.PORT ? Number(process.env.PORT) : 3000,
-  }
 });

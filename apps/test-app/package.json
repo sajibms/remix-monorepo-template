@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "myapp",
+  "name": "test-app",
   "scripts": {},
   "type": "module",
   "dependencies": {
