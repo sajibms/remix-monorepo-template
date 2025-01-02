@@ -19,7 +19,8 @@
       "@acme/R2/server": ["libs/R2/src/server.ts"],
       "@acme/UI": ["libs/UI/src/index.ts"],
       "@acme/UI/server": ["libs/UI/src/server.ts"],
-      "@acme/models": ["libs/models/src/index.ts"]
+      "@acme/models": ["libs/models/src/index.ts"],
+      "@acme/types": ["libs/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

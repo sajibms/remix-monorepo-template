@@ -1,8 +1,8 @@
-import mongoose, { model, Schema } from "mongoose";
+import mongoose, { model, Schema } from 'mongoose';
 
-import { ISEOSetting, SeoSettingModel } from "./seo-setting.interface";
+import { ISEOSetting } from '@acme/types';
 
-const userSchema = new Schema<ISEOSetting, SeoSettingModel>(
+const userSchema = new Schema<ISEOSetting>(
   {
     openGraphImage: { type: String },
     openGraphTitle: { type: String },
@@ -17,10 +17,9 @@ const userSchema = new Schema<ISEOSetting, SeoSettingModel>(
     toJSON: {
       virtuals: true,
     },
-  },
+  }
 );
 
-export const SEOSettingModel = mongoose.models["SEO-Setting"] || model<ISEOSetting, SeoSettingModel>(
-  "SEO-Setting",
-  userSchema,
-);
+export const SEOSettingModel =
+  mongoose.models['SEO-Setting'] ||
+  model<ISEOSetting>('SEO-Setting', userSchema);

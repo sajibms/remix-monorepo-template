@@ -1,6 +1,6 @@
-import mongoose, { model, Schema } from "mongoose";
+import mongoose, { model, Schema } from 'mongoose';
 
-import { IFooterSection } from "./footer.interface";
+import { IFooterSection } from '@acme/types';
 
 const FooterSectionModel = new Schema<IFooterSection>(
   {
@@ -20,10 +20,9 @@ const FooterSectionModel = new Schema<IFooterSection>(
   },
   {
     timestamps: true,
-  },
+  }
 );
 
-export const FooterSection = mongoose.models["Footer-Section"] || model<IFooterSection>(
-  "Footer-Section",
-  FooterSectionModel,
-);
+export const FooterSection =
+  mongoose.models['Footer-Section'] ||
+  model<IFooterSection>('Footer-Section', FooterSectionModel);

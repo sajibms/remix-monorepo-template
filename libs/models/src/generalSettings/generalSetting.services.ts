@@ -1,8 +1,8 @@
-import { IGeneralSetting } from "./generalSetting.interface";
-import { GeneralSetting } from "./generalSetting.model";
+import { IGeneralSetting } from '@acme/types';
+import { GeneralSetting } from './generalSetting.model';
 
 export const createGeneralSetting = async (
-  payload: Partial<IGeneralSetting>,
+  payload: Partial<IGeneralSetting>
 ) => {
   const isExistingData = await GeneralSetting.findOne({});
 
@@ -11,14 +11,14 @@ export const createGeneralSetting = async (
       await GeneralSetting.findByIdAndUpdate(isExistingData._id, payload, {
         new: true,
       });
-      return { message: "General Setting update successfully!" };
+      return { message: 'General Setting update successfully!' };
     } else {
       await GeneralSetting.create(payload);
-      return { message: "General Setting create successfully!" };
+      return { message: 'General Setting create successfully!' };
     }
   } catch (err) {
     console.error(err);
-    throw new Error("Upload operation failed. Please try again later.");
+    throw new Error('Upload operation failed. Please try again later.');
   }
 };
 

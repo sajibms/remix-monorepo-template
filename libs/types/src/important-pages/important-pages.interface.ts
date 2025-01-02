@@ -1,5 +1,3 @@
-import { Model } from "mongoose";
-
 export interface IImportantPages {
   _id?: string;
   title: string;
@@ -9,5 +7,3 @@ export interface IImportantPages {
   createdAt?: Date;
   updatedAt?: Date;
 }
-
-export type ImportantPageModel = Model<IImportantPages>;

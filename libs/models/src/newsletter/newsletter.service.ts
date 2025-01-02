@@ -1,5 +1,5 @@
-import { INewsLetter } from "./newsletter.interface";
-import { NewsLetter } from "./newsletter.model";
+import { INewsLetter } from '@acme/types';
+import { NewsLetter } from './newsletter.model';
 
 export const storeNewsletterEmail = async (payload: INewsLetter) => {
   // * check if email already exists
@@ -7,7 +7,7 @@ export const storeNewsletterEmail = async (payload: INewsLetter) => {
     email: payload.email,
   });
   if (isEmailExists) {
-    throw new Error("Email already exists");
+    throw new Error('Email already exists');
   }
   // * create newsletter
   const newsletter = await NewsLetter.create(payload);

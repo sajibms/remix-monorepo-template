@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IPostSetting } from "./postSetting.interface";
+import { IPostSetting } from "@acme/types";
 import { PostSetting } from "./postSetting.model";
 
 export const getPostBySlug = async (

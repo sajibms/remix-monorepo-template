@@ -1,8 +1,7 @@
+import { IUser } from '@acme/types';
 import mongoose, { model, Schema } from "mongoose";
 
-import { IUser, UserModel } from "./auth.interface";
-
-const userSchema = new Schema<IUser, UserModel>(
+const userSchema = new Schema<IUser>(
   {
     username: {
       type: String,
@@ -22,4 +21,4 @@ const userSchema = new Schema<IUser, UserModel>(
   },
 );
 
-export const User = mongoose.models["User"] || model<IUser, UserModel>("User", userSchema);
+export const User = mongoose.models["User"] || model<IUser>("User", userSchema);

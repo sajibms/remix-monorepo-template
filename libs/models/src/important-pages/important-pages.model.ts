@@ -1,6 +1,5 @@
-import mongoose, { model, Schema } from "mongoose";
-
-import { IImportantPages } from "./important-pages.interface";
+import mongoose, { model, Schema } from 'mongoose';
+import { IImportantPages } from '@acme/types';
 
 const importantPageSchema = new Schema<IImportantPages>(
   {
@@ -14,7 +13,9 @@ const importantPageSchema = new Schema<IImportantPages>(
     toJSON: {
       virtuals: true,
     },
-  },
+  }
 );
 
-export const ImportantPageModel = mongoose.models["Important-pages"] || model("Important-pages", importantPageSchema);
+export const ImportantPageModel =
+  mongoose.models['Important-pages'] ||
+  model('Important-pages', importantPageSchema);

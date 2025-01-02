@@ -2,7 +2,7 @@ import { getAllCustomPages } from "../custom-page/custom-page.service";
 import { GeneralSetting } from "../generalSettings/generalSetting.model";
 import { getGeneralSetting } from "../generalSettings/generalSetting.services";
 
-import { ISEOSetting } from "./seo-setting.interface";
+import { ISEOSetting } from "@acme/types";
 import { SEOSettingModel } from "./seo-setting.model";
 
 export const createSEOSetting = async (

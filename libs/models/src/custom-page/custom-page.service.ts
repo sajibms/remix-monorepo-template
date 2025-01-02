@@ -1,4 +1,4 @@
-import { ICustomPage } from "./custom-page.interface";
+import { ICustomPage } from "@acme/types";
 import { CustomPage } from "./custom-page.model";
 
 export const createCustomPage = async (payload: ICustomPage) => {

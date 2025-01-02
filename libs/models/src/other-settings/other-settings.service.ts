@@ -1,4 +1,4 @@
-import { IContactUs } from "./other-settings.interface";
+import { IContactUs } from "@acme/types";
 import { OtherSettings } from "./other-settings.model";
 
 export const createContactUs = async (payload: IContactUs) => {

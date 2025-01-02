@@ -1,5 +1,3 @@
-import { Model } from "mongoose";
-
 import { ICustomPage } from "../custom-page/custom-page.interface";
 
 export interface ISEOSetting {
@@ -24,5 +22,3 @@ export interface ISitemapData {
   customPages: ICustomPage[];
   robotsInfo: IRobotsInfo;
 }
-
-export type SeoSettingModel = Model<ISEOSetting>;

@@ -1,33 +1,30 @@
-import mongoose, { model, Schema } from "mongoose";
+import mongoose, { model, Schema } from 'mongoose';
 
-import {
-  GeneralSettingModel,
-  IGeneralSetting,
-} from "./generalSetting.interface";
+import { IGeneralSetting } from '@acme/types';
 
-const GeneralSettingSchema = new Schema<IGeneralSetting, GeneralSettingModel>(
+const GeneralSettingSchema = new Schema<IGeneralSetting>(
   {
     title: {
       type: String,
-      required: [true, "title Is required"],
+      required: [true, 'title Is required'],
       trim: true,
     },
     description: {
       type: String,
-      required: [true, "description Is required"],
+      required: [true, 'description Is required'],
     },
     siteUrl: {
       type: String,
-      required: [true, "url Is required"],
+      required: [true, 'url Is required'],
     },
     logo: {
       type: String,
-      required: [true, "Logo Is required"],
+      required: [true, 'Logo Is required'],
       trim: true,
     },
     favicon: {
       type: String,
-      required: [true, "Favicon Is required"],
+      required: [true, 'Favicon Is required'],
       trim: true,
     },
   },
@@ -37,10 +34,9 @@ const GeneralSettingSchema = new Schema<IGeneralSetting, GeneralSettingModel>(
     toJSON: {
       virtuals: true,
     },
-  },
+  }
 );
 
-export const GeneralSetting = mongoose.models["General-Setting"] || model<IGeneralSetting, GeneralSettingModel>(
-  "General-Setting",
-  GeneralSettingSchema,
-);
+export const GeneralSetting =
+  mongoose.models['General-Setting'] ||
+  model<IGeneralSetting>('General-Setting', GeneralSettingSchema);

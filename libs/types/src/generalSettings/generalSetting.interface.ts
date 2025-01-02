@@ -1,5 +1,3 @@
-import { Model } from "mongoose";
-
 export interface IGeneralSetting {
   _id?: string;
   title: string;
@@ -8,5 +6,3 @@ export interface IGeneralSetting {
   logo: string;
   favicon: string;
 }
-
-export type GeneralSettingModel = Model<IGeneralSetting>;

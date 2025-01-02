@@ -1,5 +1,5 @@
 import { createCookieSessionStorage, redirect } from "@remix-run/node";
-import { IUser } from "./auth.interface";
+import { IUser } from "@acme/types";
 import { User } from "./auth.model";
 
 export const createUser = async (payload: IUser): Promise<IUser> => {
@@ -111,7 +111,7 @@ export const sessionStorage = createCookieSessionStorage({
     sameSite: "lax", // Protects against CSRF
     path: "/",
     httpOnly: true, // Prevents client-side JS from accessing the cookie
-    secrets: [process.env.SESSION_SECRET || "fallback_secret"],
+    secrets: [process.env["SESSION_SECRET"] || "fallback_secret"],
     secure: process.env.NODE_ENV === "production", // HTTPS only in production
   },
 });

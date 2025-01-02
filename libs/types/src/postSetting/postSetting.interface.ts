@@ -1,5 +1,3 @@
-import { Model } from "mongoose";
-
 export interface IPostSetting {
   _id?: string;
   title: string;
@@ -12,5 +10,3 @@ export interface IPostSetting {
   content: string;
   status?: string;
 }
-
-export type PostSettingModel = Model<IPostSetting>;

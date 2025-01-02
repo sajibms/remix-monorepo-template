@@ -1,4 +1,4 @@
-import { IFooterSection } from "./footer.interface";
+import { IFooterSection } from "@acme/types";
 import { FooterSection } from "./footer.model";
 
 export const createFooterSection = async (

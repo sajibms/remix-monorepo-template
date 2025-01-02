@@ -1,13 +1,13 @@
-import { IImportantPages } from "./important-pages.interface";
-import { ImportantPageModel } from "./important-pages.model";
+import { IImportantPages } from '@acme/types';
+import { ImportantPageModel } from './important-pages.model';
 
 export const createImportantPage = async (
-  payload: IImportantPages,
+  payload: IImportantPages
 ): Promise<IImportantPages> => {
   const findPage = await ImportantPageModel.findOne({ slug: payload.slug });
 
   if (findPage) {
-    throw new Error("Page already exists");
+    throw new Error('Page already exists');
   } else {
     const createPage = await ImportantPageModel.create(payload);
     return createPage;
@@ -22,8 +22,8 @@ export const getAllImportantPages = async () => {
 
 export const getAllImportantPagesByTitle = async () => {
   const result = await ImportantPageModel.find(
-    { slug: { $ne: "about-us" } },
-    { title: 1, slug: 1 },
+    { slug: { $ne: 'about-us' } },
+    { title: 1, slug: 1 }
   );
   return result;
 };
@@ -32,7 +32,7 @@ export const getSingleImportantPage = async (slug: string) => {
   const getApageAndIncrementViews = await ImportantPageModel.findOneAndUpdate(
     { slug },
     { $inc: { views: 1 } },
-    { new: true },
+    { new: true }
   );
 
   return getApageAndIncrementViews;
@@ -40,7 +40,7 @@ export const getSingleImportantPage = async (slug: string) => {
 
 export const updateImportantPage = async (
   slug: string,
-  payload: IImportantPages,
+  payload: IImportantPages
 ) => {
   try {
     const result = await ImportantPageModel.findOneAndUpdate(
@@ -48,11 +48,11 @@ export const updateImportantPage = async (
       { ...payload },
       {
         new: true,
-      },
+      }
     );
     return result;
   } catch (error) {
-    console.error("error", error);
+    console.error('error', error);
     throw new Error(error as string);
   }
 };
