@@ -1,5 +1,6 @@
-import { json } from "@remix-run/react";
-import { verifyRecaptcha } from "./utils/verifyRecaptcha";
+import { json } from '@remix-run/react';
+import { verifyRecaptcha } from './utils/verifyRecaptcha';
+import { storeMessageFromContact } from '@acme/models';
 
 export async function contactFormAction({ request }: { request: Request }) {
   const formData = await request.formData();
@@ -58,6 +59,20 @@ export async function contactFormAction({ request }: { request: Request }) {
               ? error.message
               : 'reCAPTCHA verification failed',
         },
+        { status: 400 }
+      );
+    }
+
+    // * Store the message in the database
+    const result = await storeMessageFromContact({
+      name,
+      email,
+      message,
+    });
+
+    if (!result) {
+      return json(
+        { error: 'Failed to send message. Please try again' },
         { status: 400 }
       );
     }

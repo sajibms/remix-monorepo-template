@@ -1,5 +1,6 @@
 import { Form, useActionData, useLoaderData, useNavigation } from '@remix-run/react';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export function ContactForm() {
   const contactUsData = useLoaderData();
@@ -9,12 +10,10 @@ export function ContactForm() {
   const isSubmitting = navigation.state === 'submitting';
 
   useEffect(() => {
-    if (actionData) {
-      if ('error' in actionData) {
-        alert(actionData.error);
-      } else if ('success' in actionData && actionData.success) {
-        alert(actionData.message);
-      }
+    if(actionData?.success) {
+      toast.success(actionData?.message ?? 'Message sent successfully');
+    } else if(actionData?.error) {
+      toast.error(actionData?.error ?? 'Something went wrong');
     }
   }, [actionData]);
 
