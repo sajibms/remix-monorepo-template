@@ -5,6 +5,7 @@
   "scripts": {
     "lint:all": "npx nx run-many --all --target=lint",
     "build:all": "npx nx run-many --all --target=build",
+    "dev:all": "npx nx run-many -t dev --parallel --all",
     "testApp": "npx nx run test-app:dev",
     "1-dev": "npx nx dev youtube-money-calculator",
     "1-lint": "npx nx lint youtube-money-calculator",
