@@ -1,0 +1,9 @@
+{
+  "name": "R2",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/R2/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project R2 --web",
+  "targets": {}
+}

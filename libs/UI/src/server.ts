@@ -7,3 +7,6 @@ export { cookieConsentAction } from './CookieConsent/cookieConcent.action';
 // * action & loader function from contact form
 export { contactFormAction } from './ContactForm/contactform.action';
 export { contactFormLoader } from './ContactForm/contactform.loader';
+
+// * action function from tip tap
+export { imageUploadAction } from './TipTap/imageUpload.action';
