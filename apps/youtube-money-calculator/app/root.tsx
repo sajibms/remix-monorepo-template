@@ -1,9 +1,12 @@
 import {
+  isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteError,
 } from '@remix-run/react';
 import type { MetaFunction, LinksFunction } from '@remix-run/node';
 import './tailwind.css';
@@ -52,3 +55,52 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return <Outlet />;
 }
+
+export const ErrorBoundary = () => {
+  const error = useRouteError();
+  const response = isRouteErrorResponse(error);
+
+  if (response) {
+    return (
+      <main className="flex min-h-screen flex-col items-center justify-center">
+        <div className="rounded-lg border border-gray-200 bg-white p-6 text-center shadow-md">
+          <h1 className="text-4xl font-bold text-red-600">
+            {error.status} - {error.statusText}
+          </h1>
+          <p className="mt-4 text-lg">
+            {error.data?.message ?? 'Something went wrong!'}
+          </p>
+          <p className="mt-6">
+            <Link
+              to="/"
+              className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+            >
+              Back to Home Page!!
+            </Link>
+          </p>
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center">
+      <div className="rounded-lg border border-gray-200 bg-white p-6 text-center shadow-md">
+        <h1 className="text-4xl font-bold text-red-600">An error occurred!</h1>
+        <p className="mt-4 text-lg">
+          {error instanceof Error
+            ? error.message.toString()
+            : 'Something went wrong!'}
+        </p>
+        <p className="mt-6">
+          <Link
+            to="/"
+            className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+          >
+            Back to Home Page!!
+          </Link>
+        </p>
+      </div>
+    </main>
+  );
+};
